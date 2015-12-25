@@ -20,6 +20,7 @@ add_action('admin_menu','nizar_add_admin_page');
 function sunset_custom_settings(){
     register_setting('nizar-settings-group','first_name');
     register_setting('nizar-settings-group','last_name');
+    register_setting('nizar-settings-group','user_description');
     register_setting('nizar-settings-group','twitter_handler', 'sanitisation_twitter_handler');
     register_setting('nizar-settings-group','Facbook_handler');
     register_setting('nizar-settings-group','Google_handler');
@@ -27,6 +28,7 @@ function sunset_custom_settings(){
     add_settings_section('nizar-sidebar-obtions','Sidebar Options','nizar_sidebar_options','nizar-theme-option');
 
     add_settings_field('sidebaer-name','Full Name ','sunset_sedebar_name','nizar-theme-option','nizar-sidebar-obtions' );
+    add_settings_field('sidebaer-description','Description','sunset_sedebar_description','nizar-theme-option','nizar-sidebar-obtions' );
     add_settings_field('sidebaer-twitter','Twitter handler','sunset_sedebar_twitter','nizar-theme-option','nizar-sidebar-obtions' );
     add_settings_field('sidebaer-Facbook','Facbook handler','sunset_sedebar_Facbook','nizar-theme-option','nizar-sidebar-obtions' );
     add_settings_field('sidebaer-Google+','Google+ handler','sunset_sedebar_Google','nizar-theme-option','nizar-sidebar-obtions' );
@@ -40,6 +42,11 @@ function sunset_sedebar_name(){
     $last_name = esc_attr(get_option('last_name'));
     $data =  '<input type="text" name="first_name" value="'.$firstname.'" placeholder="First Name">';
     $data .=  '<input type="text" name="last_name" value="'.$last_name.'" placeholder="Last Name">';
+    echo $data;
+}
+function sunset_sedebar_description(){
+    $user_description = esc_attr(get_option('user_description'));
+     $data =  '<input type="text" name="user_description" value="'.$user_description.'" placeholder="User Description">';
     echo $data;
 }
 function sunset_sedebar_twitter(){
